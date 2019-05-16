@@ -35,12 +35,12 @@ public class UserControllerTest {
     @Test
     public void testGetProductListSuccess() throws URISyntaxException
     {
-    	final String baseUrl = "http://localhost:" + port + "/MyCart/api/";
+    	final String baseUrl = "http://localhost:" + port + "/abcstock/api/users";
         ResponseEntity<List<User>> response = restTemplate.exchange(baseUrl,
         		  HttpMethod.GET,
         		  null,
         		  new ParameterizedTypeReference<List<User>>(){});
         		List<User> employees = response.getBody();
-       Assert.assertEquals(6, employees.size()); 		
+       Assert.assertEquals(3, employees.size()); 		
     }
 }
