@@ -8,5 +8,6 @@ import com.hcl.abcstock.models.Stock;
 
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Integer>{
+	Stock findByStockId(int stockId);
 
 }

@@ -19,4 +19,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity(errors, HttpStatus.INTERNAL_SERVER_ERROR);
 	}	
 	
+	@ExceptionHandler(value=StockNotAvailableException.class)
+	protected ResponseEntity<Object> stockexceptionHandler(Exception exception) {
+		Errors errors = new Errors();			
+		errors.setErrorMsg(exception.getMessage());
+        return new ResponseEntity(errors, HttpStatus.INTERNAL_SERVER_ERROR);
+	}	
+	
 }

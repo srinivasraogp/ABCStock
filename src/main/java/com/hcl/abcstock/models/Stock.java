@@ -1,12 +1,19 @@
 package com.hcl.abcstock.models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Stock {
 	
     @Id		
-    @Column(name="Stock_Id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Stock_Id")
 	private int stockId;
 	private String stockName;
 	public int getStockId() {
@@ -26,13 +33,13 @@ public class Stock {
 	}
 	public void setStockPrice(double stockPrice) {
 		this.stockPrice = stockPrice;
+	}	
+	public int getLimitofStocks() {
+		return limitofStocks;
 	}
-	public int getLimit() {
-		return limit;
-	}
-	public void setLimit(int limit) {
-		this.limit = limit;
+	public void setLimitofStocks(int limitofStocks) {
+		this.limitofStocks = limitofStocks;
 	}
 	private double stockPrice;
-	private int limit;
+	private int limitofStocks;
 }

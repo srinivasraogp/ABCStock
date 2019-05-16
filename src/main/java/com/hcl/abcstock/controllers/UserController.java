@@ -7,12 +7,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.abcstock.models.User;
 import com.hcl.abcstock.services.UserService;
+import com.hcl.abcstock.beans.*;
+import com.hcl.abcstock.errors.StockNotAvailableException;
+
 
 @RestController
 @RequestMapping(path="/api")
@@ -34,4 +38,15 @@ public class UserController {
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 	
+	
+	@PostMapping("/PurchaseStock")
+	public ResponseEntity<String> purchaseStocks(StockPurchaseRequestDto stockPurchaseRequest) throws StockNotAvailableException{
+		String message = null;	
+		logger.debug("Stock Purchasing Starts ==========>> ");
+		
+		message = userService.processPurchase(stockPurchaseRequest);
+		
+		logger.debug("Stock Purchasing Ends ==========>> ");
+		return new ResponseEntity<String>(message, HttpStatus.CREATED);
+	}
 }
