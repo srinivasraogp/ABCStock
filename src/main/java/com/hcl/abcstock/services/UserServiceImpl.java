@@ -88,5 +88,10 @@ public class UserServiceImpl  implements UserService {
 		//stockPrice * stockPercentage = 100 * x 
 		return ((stockPrice * stockPercentage)/100);
 	}
+	
+	@Override
+	public List<Transaction> getAllTransationForUser(int userId) {
+		return transactionRepository.findAllByUserId(userId);
+	}
 
 }
