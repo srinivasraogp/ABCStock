@@ -2,17 +2,20 @@ package com.hcl.abcstock.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class User {
-	 @Id
-		
-	 @Column(name="User_Id")
-	 private int userId;
-	 public int getUserId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int userId;
+	@Column(unique = true,nullable = true)
+	private String userName;
+	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
@@ -24,6 +27,6 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	private String userName;
+
 
 }
