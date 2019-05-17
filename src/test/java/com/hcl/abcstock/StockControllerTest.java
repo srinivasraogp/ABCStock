@@ -42,6 +42,6 @@ public class StockControllerTest {
         		  null,
         		  new ParameterizedTypeReference<List<Stock>>(){});
         		List<Stock> employees = response.getBody();
-       Assert.assertEquals(6, employees.size()); 		
+       Assert.assertEquals(3, employees.size()); 		
     }
 }
